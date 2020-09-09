@@ -1,0 +1,35 @@
+name: khipu_pay
+description: Plugin to create payment identifiers, process payments and verify the status of a payment through the Khipu Platform.
+version: 1.0.0
+author: Juan Vergara (JuanVeGu)
+homepage: https://github.com/JuanVeGu/khipu_pay
+
+environment:
+  sdk: ">=2.7.0 <3.0.0"
+  flutter: ">=1.10.0"
+
+dependencies:
+  flutter:
+    sdk: flutter
+
+  http: ^0.12.2
+  crypto: ^2.1.4
+  cryptoutils: ^0.4.0
+  diacritic: ^0.1.1
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+
+flutter:
+  plugin:
+    platforms:
+      android:
+        package: cl.juanvegu.khipu_pay
+        pluginClass: KhipuPayPlugin
+      ios:
+        pluginClass: KhipuPayPlugin
+
+  # To add assets to your plugin package, add an assets section, like this:
+  # assets:
+  #   - images/a_dot_burr.jpeg
