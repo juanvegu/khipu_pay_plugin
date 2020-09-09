@@ -32,8 +32,8 @@ class _MyAppState extends State<MyApp> {
       secret = "";
     } else {
       // Development Credentials
-      id = "257939";
-      secret = "0ce6fdb700b7fe668cfde33d0311d87196f22f27";
+      id = "";
+      secret = "";
     }
   }
 
