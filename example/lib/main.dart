@@ -1,9 +1,9 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
-import 'package:khipu_pay/khipu_pay.dart';
-import 'package:khipu_pay/khipu_payment_status.dart';
-import 'package:khipu_pay/khipu_payment.dart';
+import 'package:khipu_pay_plugin/khipu_pay.dart';
+import 'package:khipu_pay_plugin/khipu_payment_status.dart';
+import 'package:khipu_pay_plugin/khipu_payment.dart';
 
 void main() {
   runApp(MyApp());

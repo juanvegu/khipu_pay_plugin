@@ -3,7 +3,7 @@ import 'dart:convert';
 import 'package:diacritic/diacritic.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
-import 'package:khipu_pay/encrypt_data.dart';
+import 'package:khipu_pay_plugin/encrypt_data.dart';
 
 class KhipuPayment {
   EncryptData encryptData = new EncryptData();

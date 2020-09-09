@@ -1,7 +1,7 @@
 import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
-import 'package:khipu_pay/encrypt_data.dart';
+import 'package:khipu_pay_plugin/encrypt_data.dart';
 
 class KhipuPaymentStatus {
   EncryptData encryptData = new EncryptData();
