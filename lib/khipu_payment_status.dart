@@ -6,10 +6,10 @@ import 'package:khipu_pay_plugin/encrypt_data.dart';
 class KhipuPaymentStatus {
   EncryptData encryptData = new EncryptData();
 
-  Future<String> status({
-    @required String transactionCode,
-    @required String id,
-    @required String secret,
+  Future<String?> status({
+    required String transactionCode,
+    required String id,
+    required String secret,
   }) async {
     if (transactionCode != null && transactionCode.isEmpty) {
       throw ArgumentError.value(
@@ -34,7 +34,7 @@ class KhipuPaymentStatus {
     String authorization = '$id' + ':' + sign;
 
     var response = await http.get(
-      url,
+      Uri.parse(url),
       headers: {
         'Authorization': authorization,
         'Content-Type': 'application/x-www-form-urlencoded',
