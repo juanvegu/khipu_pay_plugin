@@ -3,8 +3,8 @@
 # Run `pod lib lint khipu_pay.podspec' to validate before publishing.
 #
 Pod::Spec.new do |s|
-  s.name             = 'khipu_pay'
-  s.version          = '1.0.0'
+  s.name             = 'khipu_pay_plugin'
+  s.version          = '1.1.0'
   s.summary          = 'Plugin Khipu Platform.'
   s.description      = <<-DESC
 Plugin to create payment identifiers, process payments and verify the status of a payment through the Khipu Platform.
@@ -15,8 +15,8 @@ Plugin to create payment identifiers, process payments and verify the status of 
   s.source           = { :path => '.' }
   s.source_files = 'Classes/**/*'
   s.dependency 'Flutter'
-  s.dependency 'khenshin', '~> 1.702'
-  s.platform = :ios, '8.0'
+  s.dependency 'khenshin', '~> 1.724'
+  s.platform = :ios, '9.0'
 
   # Flutter.framework does not contain a i386 slice. Only x86_64 simulators are supported.
   s.pod_target_xcconfig = { 'DEFINES_MODULE' => 'YES', 'VALID_ARCHS[sdk=iphonesimulator*]' => 'x86_64' }

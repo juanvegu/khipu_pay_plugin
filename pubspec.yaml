@@ -1,6 +1,6 @@
 name: khipu_pay_plugin
 description: Plugin to create payment identifiers, process payments and verify the status of a payment through the Khipu Platform.
-version: 1.0.0
+version: 1.1.0
 homepage: https://github.com/JuanVeGu/khipu_pay
 
 environment:
