@@ -1,3 +1,8 @@
+## 1.1.0
+
+* Null-safety
+* Version of khenshin 1.724 iOS
+
 ## 1.0.0
 
 * Version of khenshin 7.1.2 Android

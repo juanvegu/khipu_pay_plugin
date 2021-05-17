@@ -4,6 +4,10 @@ A Flutter plugin that uses Khipu libraries to process payments in applications d
 
 This plugin also has support to create payment identifiers and validate payment status.
 
+## Null-Safety checked!
+
+KhipuPay now works with Null-Safety.
+
 ## AndroidManifest changes
 
 To use the plugin on Android, you must modify the android: name of application, since you need to have an instance of KhenshinInterface

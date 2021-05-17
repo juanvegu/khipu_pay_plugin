@@ -1,20 +1,19 @@
 import 'dart:convert';
 
 import 'package:diacritic/diacritic.dart';
-import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'package:khipu_pay_plugin/encrypt_data.dart';
 
 class KhipuPayment {
   EncryptData encryptData = new EncryptData();
 
-  Future<String> getPaymentId({
-    @required String id,
-    @required String secret,
-    @required String subject,
-    @required String amount,
-    @required String currency,
-    String email,
+  Future<String?> getPaymentId({
+    required String id,
+    required String secret,
+    required String subject,
+    required String amount,
+    required String currency,
+    String? email,
   }) async {
     validateFields(id, secret, subject, amount, currency, email);
 
@@ -56,7 +55,7 @@ class KhipuPayment {
     }
 
     var response = await http.post(
-      url + '?' + postData.toString(),
+      Uri.parse('$url?${postData.toString()}'),
       headers: {
         'Authorization': authorization,
         'Content-Type': 'application/x-www-form-urlencoded',
@@ -80,29 +79,29 @@ class KhipuPayment {
     String subject,
     String amount,
     String currency,
-    String email,
+    String? email,
   ) {
-    if (id != null && id.isEmpty) {
+    if (id.isEmpty) {
       throw ArgumentError.value(id, 'id cannot be empty or null');
     }
 
-    if (secret != null && secret.isEmpty) {
+    if (secret.isEmpty) {
       throw ArgumentError.value(secret, 'secret cannot be empty or null');
     }
 
-    if (subject != null && subject.isEmpty) {
+    if (subject.isEmpty) {
       throw ArgumentError.value(subject, 'subject cannot be empty or null');
     }
 
     var amountInt = int.parse(amount);
-    if (amount != null && amount.isEmpty) {
+    if (amount.isEmpty) {
       throw ArgumentError.value(amount, 'amount cannot be empty or null');
     } else if (amountInt is int && amountInt <= 0) {
       throw ArgumentError.value(
           amount, 'amount must be an int and greater than 0');
     }
 
-    if (currency != null && currency.isEmpty) {
+    if (currency.isEmpty) {
       throw ArgumentError.value(currency, 'currency cannot be empty or null');
     }
 

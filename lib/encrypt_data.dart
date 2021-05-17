@@ -2,7 +2,7 @@ import 'dart:convert';
 import 'package:crypto/crypto.dart';
 
 class EncryptData {
-  String percentEncode(String url) {
+  String percentEncode(String? url) {
     if (url == null) {
       return "";
     } else {
@@ -11,7 +11,7 @@ class EncryptData {
   }
 
   String hmacSHA256(String secret, String toSign) {
-    if (secret == null || toSign == null) {
+    if (secret.isEmpty || toSign.isEmpty) {
       return "";
     }
 
