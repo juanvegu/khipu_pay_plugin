@@ -1,5 +1,4 @@
 import 'dart:convert';
-import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'package:khipu_pay_plugin/encrypt_data.dart';
 
@@ -11,17 +10,17 @@ class KhipuPaymentStatus {
     required String id,
     required String secret,
   }) async {
-    if (transactionCode != null && transactionCode.isEmpty) {
+    if (transactionCode.isEmpty) {
       throw ArgumentError.value(
-          transactionCode, 'transactionCode cannot be empty or null');
+          transactionCode, 'transactionCode cannot be empty');
     }
 
-    if (id != null && id.isEmpty) {
-      throw ArgumentError.value(id, 'id cannot be empty or null');
+    if (id.isEmpty) {
+      throw ArgumentError.value(id, 'id cannot be empty');
     }
 
-    if (secret != null && secret.isEmpty) {
-      throw ArgumentError.value(secret, 'secret cannot be empty or null');
+    if (secret.isEmpty) {
+      throw ArgumentError.value(secret, 'secret cannot be empty');
     }
 
     String method = "GET";
@@ -43,11 +42,9 @@ class KhipuPaymentStatus {
 
     if (response.statusCode == 200 || response.statusCode == 201) {
       final Map responseMap = json.decode(response.body);
-      print("responseMap.status: " + responseMap['status']);
       return responseMap['status'];
     } else {
-      print("response.body: " + response.body);
-      return '';
+      return null;
     }
   }
 }

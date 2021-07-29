@@ -17,7 +17,7 @@ class MyApp extends StatefulWidget {
 
 class _MyAppState extends State<MyApp> {
   String paymentId = "";
-  String paymentStatus = "-";
+  String? paymentStatus = "-";
 
   String id = "";
   String secret = "";
@@ -56,7 +56,7 @@ class _MyAppState extends State<MyApp> {
                   style: TextStyle(color: Colors.white),
                 ),
                 onPressed: () async {
-                  String idPayment = await KhipuPayment().getPaymentId(
+                  String? idPayment = await KhipuPayment().getPaymentId(
                     id: id, //Information delivered by khipu
                     secret: secret, //Information delivered by khipu
                     subject: "Subject of payment",
@@ -67,7 +67,7 @@ class _MyAppState extends State<MyApp> {
                   print('The payment ID is: $idPayment');
 
                   setState(() {
-                    paymentId = idPayment;
+                    paymentId = idPayment ?? "";
                   });
                 },
               ),
@@ -99,7 +99,7 @@ class _MyAppState extends State<MyApp> {
 
                   setState(() {});
 
-                  print('Payment status is: $paymentStatus');
+                  print('Payment status is: ${paymentStatus ?? "-"}');
                 },
               ),
               SizedBox(height: 30.0),

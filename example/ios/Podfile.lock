@@ -32,7 +32,7 @@ PODS:
     - PPTopMostController (= 0.0.1)
     - RaptureXML (= 1.0.1)
     - TTTAttributedLabel (= 2.0.0)
-  - khipu_pay_plugin (1.0.0):
+  - khipu_pay_plugin (1.1.0):
     - Flutter
     - khenshin (~> 1.724)
   - PPTopMostController (0.0.1)
@@ -71,7 +71,7 @@ SPEC CHECKSUMS:
   IQKeyboardManager: 2a6e97afdafc7becf0cb17a9a8d795e3a980717f
   JSONModel: 840bc0fcffb24b8454d2c026bf26fea454b8e98d
   khenshin: f54ad5ec309efd4fc5f18bd8fdc686a51e68fccc
-  khipu_pay_plugin: 65d50e649b89bec190967e03d993d1e5ea5d39a2
+  khipu_pay_plugin: 2262a4c99b5890ec2885fcdce4757cd4f45f46ea
   PPTopMostController: 4e6f1e5f8c645bdcc74cd837a20f607ff262c048
   RaptureXML: b5c33c04c1a4adfd8ad0d5463329a31820596e82
   TTTAttributedLabel: 8cffe8e127e4e82ff3af1e5386d4cd0ad000b656

@@ -62,14 +62,13 @@ class KhipuPayment {
       },
     );
 
+    final Map responseMap = json.decode(response.body);
     if (response.statusCode == 200 || response.statusCode == 201) {
-      final Map responseMap = json.decode(response.body);
       print("paymentId: " + responseMap["payment_id"]);
       return responseMap["payment_id"];
     } else {
-      final Map responseMap = json.decode(response.body);
       print(responseMap);
-      return responseMap["message"];
+      return null;
     }
   }
 
