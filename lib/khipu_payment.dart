@@ -81,27 +81,27 @@ class KhipuPayment {
     String? email,
   ) {
     if (id.isEmpty) {
-      throw ArgumentError.value(id, 'id cannot be empty or null');
+      throw ArgumentError.value(id, 'id cannot be empty');
     }
 
     if (secret.isEmpty) {
-      throw ArgumentError.value(secret, 'secret cannot be empty or null');
+      throw ArgumentError.value(secret, 'secret cannot be empty');
     }
 
     if (subject.isEmpty) {
-      throw ArgumentError.value(subject, 'subject cannot be empty or null');
+      throw ArgumentError.value(subject, 'subject cannot be empty');
     }
 
     var amountInt = int.parse(amount);
     if (amount.isEmpty) {
-      throw ArgumentError.value(amount, 'amount cannot be empty or null');
+      throw ArgumentError.value(amount, 'amount cannot be empty');
     } else if (amountInt is int && amountInt <= 0) {
       throw ArgumentError.value(
           amount, 'amount must be an int and greater than 0');
     }
 
     if (currency.isEmpty) {
-      throw ArgumentError.value(currency, 'currency cannot be empty or null');
+      throw ArgumentError.value(currency, 'currency cannot be empty');
     }
 
     if (email != null && email.isNotEmpty && !validateEmail(email)) {

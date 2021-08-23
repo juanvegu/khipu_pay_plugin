@@ -24,7 +24,7 @@ class KhipuPay {
   /// with your billing account in Khipu.
   static Future<String> paymentProcess({required String paymentId}) async {
     if (paymentId.isEmpty) {
-      throw ArgumentError.value(paymentId, 'paymentId cannot be empty or null');
+      throw ArgumentError.value(paymentId, 'paymentId cannot be empty');
     }
 
     final String? paymentStatus = await _channel.invokeMethod<String>(
