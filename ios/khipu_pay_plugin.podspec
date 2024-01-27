@@ -15,7 +15,7 @@ Plugin to create payment identifiers, process payments and verify the status of 
   s.source           = { :path => '.' }
   s.source_files = 'Classes/**/*'
   s.dependency 'Flutter'
-  s.dependency 'khenshin', '~> 1.726'
+  s.dependency 'khenshin', '~> 1.754'
   s.platform = :ios, '11.0'
 
   # Flutter.framework does not contain a i386 slice.
