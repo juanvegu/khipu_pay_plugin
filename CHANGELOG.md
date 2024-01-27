@@ -1,7 +1,7 @@
 ## 2.0.0
 * Project restructuring
 * Web support
-* Version of khenshin 1.726 iOS
+* Version of khenshin 1.754 iOS
 
 ## 1.1.0
 
