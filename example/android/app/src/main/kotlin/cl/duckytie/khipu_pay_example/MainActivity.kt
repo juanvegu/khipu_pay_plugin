@@ -1,4 +1,4 @@
-package cl.juanvegu.khipu_pay_plugin_example
+package cl.duckytie.khipu_pay_example
 
 import io.flutter.embedding.android.FlutterActivity
 

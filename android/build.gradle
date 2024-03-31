@@ -1,4 +1,4 @@
-group 'cl.juanvegu.khipu_pay_plugin'
+group 'cl.duckytie.khipu_pay'
 version '1.0-SNAPSHOT'
 
 buildscript {
@@ -26,7 +26,7 @@ apply plugin: 'kotlin-android'
 
 android {
     if (project.android.hasProperty("namespace")) {
-        namespace 'cl.juanvegu.khipu_pay_plugin'
+        namespace 'cl.duckytie.khipu_pay'
     }
 
     compileSdkVersion 33
