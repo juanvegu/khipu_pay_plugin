@@ -1,4 +1,4 @@
-package cl.juanvegu.khipu_pay_plugin
+package cl.duckytie.khipu_pay
 
 import androidx.annotation.NonNull
 
