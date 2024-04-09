@@ -1,4 +1,6 @@
 final class Constants {
+  static const empty = "";
+  
   static const methodChannel = "khipu_pay_plugin";
   
   static const khipuId = "KHIPU_ID";
