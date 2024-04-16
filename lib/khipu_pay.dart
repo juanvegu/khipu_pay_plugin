@@ -1,24 +1,38 @@
-import 'package:flutter_dotenv/flutter_dotenv.dart';
+import 'package:khipu_pay_plugin/src/khipu_credential.dart';
 
-import 'package:khipu_pay_plugin/khipu_pay_interface.dart';
-import 'package:khipu_pay_plugin/src/config/key_mode.dart';
-import 'package:khipu_pay_plugin/src/util/constants.dart';
+final class KhipuPay {
+  static KhipuPay get instance {
+    assert(
+      _instance._initialized,
+      'You must initialize the khipupay instance before calling KhipuPay.instance',
+    );
+    return _instance;
+  }
 
-final class KhipuPay implements KhipuPayInterface {
-  static late final String khipuID;
-  static late final String khipuSecret;
+  KhipuPay._();
+  static final KhipuPay _instance = KhipuPay._();
 
-  @override
-  void initialize({KeyMode keyMode = KeyMode.dartDefine}) {
-    switch (keyMode) {
-      case KeyMode.dartDefine:
-        khipuID = const String.fromEnvironment(Constants.khipuId, defaultValue: Constants.empty);
-        khipuSecret = const String.fromEnvironment(Constants.khipuSecret, defaultValue: Constants.empty);
-      case KeyMode.env:
-        khipuID = dotenv.env[Constants.khipuId] ?? Constants.empty;
-        khipuSecret = dotenv.env[Constants.khipuSecret] ?? Constants.empty;
-      default:
-        break;
-    }
+  bool _initialized = false;
+
+  late final KhipuCredential credential;
+
+  static Future<void> initialize() async {
+    assert(
+      !_instance._initialized,
+      'This instance is already initialized',
+    );
+
+    _instance._init("khipuId", "khipuSecret");
+  }
+
+  void _init(
+    String khipuId,
+    String khipuSecret
+  ) {
+    credential = KhipuCredential(
+      khipuId: khipuId, 
+      khipuSecret: khipuSecret
+    );
+    _initialized = true;
   }
 }
