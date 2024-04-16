@@ -4,7 +4,7 @@ final class KhipuPay {
   static KhipuPay get instance {
     assert(
       _instance._initialized,
-      'You must initialize the khipupay instance before calling KhipuPay.instance',
+      'You must initialize the KhipuPay instance before calling KhipuPay.instance',
     );
     return _instance;
   }
