@@ -1,10 +1,10 @@
 import Flutter
 import UIKit
 
-public class KhipuPayPlugin: NSObject, FlutterPlugin {
+public class KhipuPay: NSObject, FlutterPlugin {
   public static func register(with registrar: FlutterPluginRegistrar) {
     let channel = FlutterMethodChannel(name: "khipu_pay_plugin", binaryMessenger: registrar.messenger())
-    let instance = KhipuPayPlugin()
+    let instance = KhipuPay()
     registrar.addMethodCallDelegate(instance, channel: channel)
   }
 
