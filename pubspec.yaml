@@ -32,7 +32,7 @@ flutter:
         pluginClass: KhipuPay
       web:
         pluginClass: KhipuPayWeb
-        fileName: khipu_pay_web.dart
+        fileName: khipu_pay_plugin.dart
 
   # To add assets to your plugin package, add an assets section, like this:
   # assets:
