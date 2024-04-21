@@ -16,7 +16,6 @@ dependencies:
   crypto: ^3.0.3
   cryptoutils: ^0.5.0
   diacritic: ^0.1.5
-  flutter_dotenv: ^5.1.0
 
 dev_dependencies:
   flutter_test:
