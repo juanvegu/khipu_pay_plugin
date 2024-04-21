@@ -49,16 +49,24 @@ final class KhipuPay {
 
         _instance._init(identifier, secret);
       case KeyMode.env:
-        await dotenv.load();
-        final identifier = dotenv.env[Constants.khipuId] ?? Constants.empty;
-        final secret = dotenv.env[Constants.khipuSecret] ?? Constants.empty;
+        try {
+          await dotenv.load();
 
-        assert(
-          identifier != Constants.empty && secret != Constants.empty,
-          'You must provide khipuId and khipuSecret in your .env file when using KeyMode.env',
-        );
+          final identifier = dotenv.env[Constants.khipuId] ?? Constants.empty;
+          final secret = dotenv.env[Constants.khipuSecret] ?? Constants.empty;
 
-        _instance._init(identifier, secret);
+          assert(
+            identifier != Constants.empty && secret != Constants.empty,
+            'You must provide khipuId and khipuSecret in your .env file when using KeyMode.env',
+          );
+
+          _instance._init(identifier, secret);
+        } catch (e) {
+          assert(
+            false,
+            'You must provide a .env file when using KeyMode.env',
+          );
+        }
     }
   }
 
