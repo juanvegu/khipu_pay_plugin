@@ -2,8 +2,6 @@ import 'package:khipu_pay_plugin/src/config/key_mode.dart';
 import 'package:khipu_pay_plugin/src/domain/khipu_credential.dart';
 import 'package:khipu_pay_plugin/src/util/constants.dart';
 
-import 'package:flutter_dotenv/flutter_dotenv.dart';
-
 final class KhipuPay {
   static KhipuPay get instance {
     assert(
@@ -48,25 +46,6 @@ final class KhipuPay {
         );
 
         _instance._init(identifier, secret);
-      case KeyMode.env:
-        try {
-          await dotenv.load();
-
-          final identifier = dotenv.env[Constants.khipuId] ?? Constants.empty;
-          final secret = dotenv.env[Constants.khipuSecret] ?? Constants.empty;
-
-          assert(
-            identifier != Constants.empty && secret != Constants.empty,
-            'You must provide khipuId and khipuSecret in your .env file when using KeyMode.env',
-          );
-
-          _instance._init(identifier, secret);
-        } catch (e) {
-          assert(
-            false,
-            'You must provide a .env file when using KeyMode.env',
-          );
-        }
     }
   }
 
