@@ -1,5 +1,7 @@
+import 'package:khipu_pay_plugin/khipu_pay_plugin.dart';
 import 'package:khipu_pay_plugin/src/config/key_mode.dart';
 import 'package:khipu_pay_plugin/src/domain/khipu_credential.dart';
+import 'package:khipu_pay_plugin/src/khipu_pay_platform.dart';
 import 'package:khipu_pay_plugin/src/util/constants.dart';
 
 final class KhipuPay {
@@ -12,7 +14,7 @@ final class KhipuPay {
   }
 
   KhipuPay._();
-  static final KhipuPay _instance = KhipuPay._();
+  static KhipuPay _instance = KhipuPay._();
 
   bool _initialized = false;
 
@@ -59,5 +61,19 @@ final class KhipuPay {
     );
 
     _initialized = true;
+  }
+
+  Future<KhipuPayment> getPayment() async {
+    Future.delayed(const Duration(seconds: 2));
+    return KhipuPayment(identifier: Constants.empty);
+  }
+
+  String processPayment() {
+    return KhipuPayPlatform.instance.processPayment();
+  }
+
+  Future<KhipuStatus> getStatus({required KhipuPayment payment}) async {
+    Future.delayed(const Duration(seconds: 2));
+    return KhipuStatus(status: Constants.empty);
   }
 }
