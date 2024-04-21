@@ -31,10 +31,7 @@ class _MyAppState extends State<MyApp> {
         ),
         body: Center(
           child: GestureDetector(
-            onTap: () {
-              print(KhipuPay.instance.credential.khipuId);
-              print(KhipuPay.instance.credential.khipuSecret);
-            },
+            onTap: () => {},
             child: const Text("Presionar"),
           ),
         ),
