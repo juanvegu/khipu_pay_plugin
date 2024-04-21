@@ -5,7 +5,11 @@ import 'package:khipu_pay_plugin/khipu_pay_plugin.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  await KhipuPay.initialize(keyMode: KeyMode.normal, khipuId: 'khipuIdddddd', khipuSecret: 'khipuSecrettttttt');
+  await KhipuPay.initialize(
+    keyMode: KeyMode.normal, 
+    khipuId: 'khipuIdddddd', 
+    khipuSecret: 'khipuSecrettttttt'
+  );
   runApp(const MyApp());
 }
 
