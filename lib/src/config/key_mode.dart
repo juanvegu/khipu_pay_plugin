@@ -1,5 +1,4 @@
 enum KeyMode {
   normal,
-  dartDefine,
-  env
+  dartDefine
 }
