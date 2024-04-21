@@ -1,4 +1,7 @@
+import 'package:khipu_pay_plugin/src/domain/khipu_payment.dart';
+import 'package:khipu_pay_plugin/src/domain/khipu_status.dart';
+
 abstract class KhipuNetworkInterface {
-  Future<String> getPaymentID();
-  Future<String> getPaymentStatus(String paymentID);
+  Future<KhipuPayment> getPaymentID();
+  Future<KhipuStatus> getPaymentStatus(String paymentID);
 }
