@@ -17,7 +17,7 @@ final class KhipuPay {
 
   bool _initialized = false;
 
-  late final KhipuCredential credential;
+  late final KhipuCredential _credential;
   late String paymentID;
 
   static void initialize({
@@ -61,7 +61,7 @@ final class KhipuPay {
     String khipuId,
     String khipuSecret
   ) {
-    credential = KhipuCredential(
+    _credential = KhipuCredential(
       khipuId: khipuId, 
       khipuSecret: khipuSecret
     );
