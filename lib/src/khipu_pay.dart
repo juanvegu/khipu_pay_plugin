@@ -19,11 +19,11 @@ final class KhipuPay {
 
   late final KhipuCredential credential;
 
-  static Future<void> initialize({
+  static void initialize({
     KeyMode keyMode = KeyMode.dartDefine,
     String? khipuId,
     String? khipuSecret,
-  }) async {
+  }) {
     assert(
       !_instance._initialized,
       'This instance is already initialized',
