@@ -38,8 +38,14 @@ final class KhipuPay {
 
         _instance._init(khipuId!, khipuSecret!);
       case KeyMode.dartDefine:
-        const identifier = String.fromEnvironment(Constants.khipuId, defaultValue: Constants.empty);
-        const secret = String.fromEnvironment(Constants.khipuSecret, defaultValue: Constants.empty);
+        const identifier = String.fromEnvironment(
+          Constants.khipuId, 
+          defaultValue: Constants.empty
+        );
+        const secret = String.fromEnvironment(
+          Constants.khipuSecret, 
+          defaultValue: Constants.empty
+        );
 
         assert(
           identifier != Constants.empty && secret != Constants.empty,
