@@ -1,6 +1,8 @@
 import 'package:khipu_pay_plugin/khipu_pay_plugin.dart';
 import 'package:khipu_pay_plugin/src/domain/khipu_credential.dart';
 import 'package:khipu_pay_plugin/src/khipu_pay_platform.dart';
+import 'package:khipu_pay_plugin/src/network/khipu_network.dart';
+import 'package:khipu_pay_plugin/src/network/khipu_network_interface.dart';
 import 'package:khipu_pay_plugin/src/util/constants.dart';
 
 final class KhipuPay {
@@ -17,7 +19,8 @@ final class KhipuPay {
 
   bool _initialized = false;
 
-  late final KhipuCredential _credential;
+
+  late KhipuNetworkInterface _network;
   late String paymentID;
 
   static void initialize({
@@ -61,17 +64,17 @@ final class KhipuPay {
     String khipuId,
     String khipuSecret
   ) {
-    _credential = KhipuCredential(
+    final KhipuCredential credential = KhipuCredential(
       khipuId: khipuId, 
       khipuSecret: khipuSecret
     );
 
+    _network = KhipuNetwork(credential: credential);
     _initialized = true;
   }
 
   Future<KhipuPayment> createPaymentID() async {
-    Future.delayed(const Duration(seconds: 2));
-    return KhipuPayment(identifier: Constants.empty);
+    return await _network.getPaymentID();
   }
 
   String processPayment() {
