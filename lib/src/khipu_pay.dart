@@ -18,6 +18,7 @@ final class KhipuPay {
   bool _initialized = false;
 
   late final KhipuCredential credential;
+  late String paymentID;
 
   static void initialize({
     KeyMode keyMode = KeyMode.dartDefine,
@@ -68,7 +69,7 @@ final class KhipuPay {
     _initialized = true;
   }
 
-  Future<KhipuPayment> getPayment() async {
+  Future<KhipuPayment> createPaymentID() async {
     Future.delayed(const Duration(seconds: 2));
     return KhipuPayment(identifier: Constants.empty);
   }
@@ -77,7 +78,7 @@ final class KhipuPay {
     return KhipuPayPlatform.instance.processPayment();
   }
 
-  Future<KhipuStatus> getStatus({required KhipuPayment payment}) async {
+  Future<KhipuStatus> paymentStatus({required KhipuPayment payment}) async {
     Future.delayed(const Duration(seconds: 2));
     return KhipuStatus(status: Constants.empty);
   }
