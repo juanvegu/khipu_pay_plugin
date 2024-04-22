@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'dart:async';
 
 import 'package:khipu_pay_plugin/khipu_pay_plugin.dart';
 
@@ -33,6 +32,9 @@ class _MyAppState extends State<MyApp> {
       home: Scaffold(
         appBar: AppBar(
           title: const Text('KhipuPay Plugin'),
+        ),
+        body: Center(
+          child: Text(KhipuPay.instance.processPayment()),
         ),
       ),
     );
