@@ -1,3 +1,4 @@
+import 'package:dio/dio.dart';
 import 'package:khipu_pay_plugin/src/config/network.dart';
 import 'package:khipu_pay_plugin/src/config/network_path.dart';
 import 'package:khipu_pay_plugin/src/domain/khipu_payment.dart';
@@ -13,13 +14,12 @@ final class KhipuNetwork implements KhipuNetworkInterface {
   Future<KhipuPayment> createPayment({required KhipuPaymentForm payment}) async {
     try {
       final response = await _network.dio.post(
-        NetworkPath.payments, 
+        NetworkPath.payments,
         data: payment.toJson()
       );
-      
       return KhipuPayment.fromJson(response.data);
     } catch (e) {
-      throw Exception('Error creating payment');
+      throw Exception('Error creating payment: $e');
     }
   }
   
@@ -29,7 +29,7 @@ final class KhipuNetwork implements KhipuNetworkInterface {
       final response = await _network.dio.get('${NetworkPath.payments}/$id');
       return KhipuPayment.fromJson(response.data);
     } catch (e) {
-      throw Exception('Error getting payment by id');
+      throw Exception('Error getting payment by id: $e');
     }
   }
 }
