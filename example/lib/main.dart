@@ -36,24 +36,20 @@ class _MyAppState extends State<MyApp> {
             children: [
               ElevatedButton(
                 onPressed: () async {
-                  final response = await KhipuPay.instance.createPayment(KhipuPaymentForm(
+                  final _ = await KhipuPay.instance.createPayment(KhipuPaymentForm(
                     subject: 'Test Payment',
                     amount: 1000,
                     currency: 'CLP',
                     transactionId: '123',
                     payerName: 'John Doe',
                   ));
-
-                  print(response.paymentId);
                 },
                 child: const Text('Create Payment'),
               ),
               Text(KhipuPay.instance.processPayment()),
               ElevatedButton(
                 onPressed: () async {
-                  final response = await KhipuPay.instance.paymentStatus(paymentId: 'ytzknrfnuljw');
-
-                  print(response.status);
+                  final _ = await KhipuPay.instance.paymentStatus(paymentId: 'ytzknrfnuljw');
                 },
                 child: const Text('Get Payment Status'),
               )

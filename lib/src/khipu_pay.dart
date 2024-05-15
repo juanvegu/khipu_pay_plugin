@@ -1,7 +1,5 @@
 import 'package:khipu_pay_plugin/khipu_pay_plugin.dart';
-import 'package:khipu_pay_plugin/src/config/network.dart';
 import 'package:khipu_pay_plugin/src/domain/khipu_credential.dart';
-import 'package:khipu_pay_plugin/src/domain/khipu_payment_form.dart';
 import 'package:khipu_pay_plugin/src/khipu_pay_platform.dart';
 import 'package:khipu_pay_plugin/src/network/khipu_network.dart';
 import 'package:khipu_pay_plugin/src/network/khipu_network_interface.dart';
@@ -58,8 +56,7 @@ final class KhipuPay {
   void _init(String apiKey) {
     final KhipuCredential credential = KhipuCredential(apiKey: apiKey);
 
-    final network = Network(credential: credential);
-    _khipuNetwork = KhipuNetwork(network: network);
+    _khipuNetwork = KhipuNetwork(credential: credential);
     _initialized = true;
   }
 
