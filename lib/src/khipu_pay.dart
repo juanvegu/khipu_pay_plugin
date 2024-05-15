@@ -25,7 +25,7 @@ final class KhipuPay {
 
   static void initialize({
     KeyMode keyMode = KeyMode.dartDefine,
-    String? khipuAPIKey,
+    String? apiKey,
   }) {
     assert(
       !_instance._initialized,
@@ -35,30 +35,28 @@ final class KhipuPay {
     switch (keyMode) {
       case KeyMode.normal:
         assert(
-          khipuAPIKey != null,
+          apiKey != null,
           'You must provide an API key when using KeyMode.norma',
         );
 
-        _instance._init(khipuAPIKey!);
+        _instance._init(apiKey!);
       case KeyMode.dartDefine:
-        const khipuAPIKey = String.fromEnvironment(
+        const apiKey = String.fromEnvironment(
           Constants.khipuAPIKey, 
           defaultValue: Constants.empty
         );
 
         assert(
-          khipuAPIKey != Constants.empty,
+          apiKey != Constants.empty,
           'You must provide an API key when using KeyMode.dartDefine',
         );
 
-        _instance._init(khipuAPIKey);
+        _instance._init(apiKey);
     }
   }
 
-  void _init(String khipuAPIKey) {
-    final KhipuCredential credential = KhipuCredential(
-      apiKey: khipuAPIKey,
-    );
+  void _init(String apiKey) {
+    final KhipuCredential credential = KhipuCredential(apiKey: apiKey);
 
     final network = Network(credential: credential);
     _khipuNetwork = KhipuNetwork(network: network);

@@ -3,7 +3,10 @@ import 'package:flutter/material.dart';
 import 'package:khipu_pay_plugin/khipu_pay_plugin.dart';
 
 void main() {
-  KhipuPay.initialize();
+  KhipuPay.initialize(
+    keyMode: KeyMode.normal, 
+    apiKey: 'c3a7ad13-0e0e-4aed-a695-24f39f021198',
+  );
   runApp(const MyApp());
 }
 
