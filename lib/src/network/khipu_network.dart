@@ -6,6 +6,11 @@ import 'package:khipu_pay_plugin/src/network/khipu_network_interface.dart';
 
 final class KhipuNetwork extends Network implements KhipuNetworkInterface {
   KhipuNetwork({required super.credential});
+  
+  @override
+  Future<void> confirmPaymentById({required String id}) {
+    throw UnimplementedError();
+  }
 
   @override
   Future<KhipuPayment> createPayment({required KhipuPaymentForm payment}) async {
@@ -21,6 +26,16 @@ final class KhipuNetwork extends Network implements KhipuNetworkInterface {
   }
   
   @override
+  Future<void> deletePaymentById({required String id}) {
+    throw UnimplementedError();
+  }
+  
+  @override
+  Future<void> getBanks() {
+    throw UnimplementedError();
+  }
+
+  @override
   Future<KhipuPayment> getPaymentById({required String id}) async {
     try {
       final response = await dio.get('${NetworkPath.payments}/$id');
@@ -28,5 +43,25 @@ final class KhipuNetwork extends Network implements KhipuNetworkInterface {
     } catch (e) {
       throw Exception('Error getting payment by id: $e');
     }
+  }
+  
+  @override
+  Future<void> getPaymentMethods({required String id}) {
+    throw UnimplementedError();
+  }
+  
+  @override
+  Future<void> getPaymentPrediction() {
+    throw UnimplementedError();
+  }
+  
+  @override
+  Future<void> postReceiver() {
+    throw UnimplementedError();
+  }
+  
+  @override
+  Future<void> refundPaymentById({required String id}) {
+    throw UnimplementedError();
   }
 }
