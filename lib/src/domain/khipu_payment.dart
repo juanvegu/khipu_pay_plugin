@@ -7,9 +7,9 @@ final class KhipuPayment {
   bool readyForTerminal;
   String? notificationToken;
   int? receiverId;
-  DateTime? conciliationDate;
+  String? conciliationDate;
   String? subject;
-  int? amount;
+  String? amount;
   String? currency;
   String? status;
   String? statusDetail;
@@ -20,7 +20,7 @@ final class KhipuPayment {
   String? cancelUrl;
   String? notifyUrl;
   String? notifyApiVersion;
-  DateTime? expiresDate;
+  String? expiresDate;
   List<String>? attachmentUrls;
   String? bank;
   String? bankId;
@@ -36,7 +36,7 @@ final class KhipuPayment {
   bool? sendEmail;
   String? paymentMethod;
   String? fundsSource;
-  int? discount;
+  String? discount;
   String? thirdPartyAuthorizationDetails;
 
   KhipuPayment({
@@ -83,89 +83,89 @@ final class KhipuPayment {
 
   factory KhipuPayment.fromJson(Map<String, dynamic> json) {
     return KhipuPayment(
-      paymentId: json['paymentId'],
-      paymentUrl: json['paymentUrl'],
-      simplifiedTransferUrl: json['simplifiedTransferUrl'],
-      transferUrl: json['transferUrl'],
-      appUrl: json['appUrl'],
-      readyForTerminal: json['readyForTerminal'],
-      notificationToken: json['notificationToken'],
-      receiverId: json['receiverId'],
-      conciliationDate: DateTime.parse(json['conciliationDate']),
+      paymentId: json['payment_id'],
+      paymentUrl: json['payment_url'],
+      simplifiedTransferUrl: json['simplified_transfer_url'],
+      transferUrl: json['transfer_url'],
+      appUrl: json['app_url'],
+      readyForTerminal: json['ready_for_terminal'],
+      notificationToken: json['notification_token'],
+      receiverId: json['receiver_id'],
+      conciliationDate: json['conciliation_date'],
       subject: json['subject'],
       amount: json['amount'],
       currency: json['currency'],
       status: json['status'],
-      statusDetail: json['statusDetail'],
+      statusDetail: json['status_detail'],
       body: json['body'],
-      pictureUrl: json['pictureUrl'],
-      receiptUrl: json['receiptUrl'],
-      returnUrl: json['returnUrl'],
-      cancelUrl: json['cancelUrl'],
-      notifyUrl: json['notifyUrl'],
-      notifyApiVersion: json['notifyApiVersion'],
-      expiresDate: DateTime.parse(json['expiresDate']),
-      attachmentUrls: List<String>.from(json['attachmentUrls']),
+      pictureUrl: json['picture_url'],
+      receiptUrl: json['receipt_url'],
+      returnUrl: json['return_url'],
+      cancelUrl: json['cancel_url'],
+      notifyUrl: json['notify_url'],
+      notifyApiVersion: json['notify_api_version'],
+      expiresDate: json['expires_date'],
+      attachmentUrls: List<String>.from(json['attachment_urls'] ?? []),
       bank: json['bank'],
-      bankId: json['bankId'],
-      payerName: json['payerName'],
-      payerEmail: json['payerEmail'],
-      personalIdentifier: json['personalIdentifier'],
-      bankAccountNumber: json['bankAccountNumber'],
-      outOfDateConciliation: json['outOfDateConciliation'],
-      transactionId: json['transactionId'],
+      bankId: json['bank_id'],
+      payerName: json['payer_name'],
+      payerEmail: json['payer_email'],
+      personalIdentifier: json['personal_identifier'],
+      bankAccountNumber: json['bank_account_number'],
+      outOfDateConciliation: json['out_of_date_conciliation'],
+      transactionId: json['transaction_id'],
       custom: json['custom'],
-      responsibleUserEmail: json['responsibleUserEmail'],
-      sendReminders: json['sendReminders'],
-      sendEmail: json['sendEmail'],
-      paymentMethod: json['paymentMethod'],
-      fundsSource: json['fundsSource'],
+      responsibleUserEmail: json['responsible_user_email'],
+      sendReminders: json['send_reminders'],
+      sendEmail: json['send_email'],
+      paymentMethod: json['payment_method'],
+      fundsSource: json['funds_source'],
       discount: json['discount'],
-      thirdPartyAuthorizationDetails: json['thirdPartyAuthorizationDetails'],
+      thirdPartyAuthorizationDetails: json['third_party_authorization_details'],
     );
   }
 
   Map<String, dynamic> toJson() {
     return {
-      'paymentId': paymentId,
-      'paymentUrl': paymentUrl,
-      'simplifiedTransferUrl': simplifiedTransferUrl,
-      'transferUrl': transferUrl,
-      'appUrl': appUrl,
-      'readyForTerminal': readyForTerminal,
-      'notificationToken': notificationToken,
-      'receiverId': receiverId,
-      'conciliationDate': conciliationDate?.toIso8601String(),
+      'payment_id': paymentId,
+      'payment_url': paymentUrl,
+      'simplified_transfer_url': simplifiedTransferUrl,
+      'transfer_url': transferUrl,
+      'app_url': appUrl,
+      'ready_for_terminal': readyForTerminal,
+      'notification_token': notificationToken,
+      'receiver_id': receiverId,
+      'conciliation_date': conciliationDate,
       'subject': subject,
       'amount': amount,
       'currency': currency,
       'status': status,
-      'statusDetail': statusDetail,
+      'status_detail': statusDetail,
       'body': body,
-      'pictureUrl': pictureUrl,
-      'receiptUrl': receiptUrl,
-      'returnUrl': returnUrl,
-      'cancelUrl': cancelUrl,
-      'notifyUrl': notifyUrl,
-      'notifyApiVersion': notifyApiVersion,
-      'expiresDate': expiresDate?.toIso8601String(),
-      'attachmentUrls': attachmentUrls,
+      'picture_url': pictureUrl,
+      'receipt_url': receiptUrl,
+      'return_url': returnUrl,
+      'cancel_url': cancelUrl,
+      'notify_url': notifyUrl,
+      'notify_api_version': notifyApiVersion,
+      'expires_date': expiresDate,
+      'attachment_urls': attachmentUrls,
       'bank': bank,
-      'bankId': bankId,
-      'payerName': payerName,
-      'payerEmail': payerEmail,
-      'personalIdentifier': personalIdentifier,
-      'bankAccountNumber': bankAccountNumber,
-      'outOfDateConciliation': outOfDateConciliation,
-      'transactionId': transactionId,
+      'bank_id': bankId,
+      'payer_name': payerName,
+      'payer_email': payerEmail,
+      'personal_identifier': personalIdentifier,
+      'bank_account_number': bankAccountNumber,
+      'out_of_date_conciliation': outOfDateConciliation,
+      'transaction_id': transactionId,
       'custom': custom,
-      'responsibleUserEmail': responsibleUserEmail,
-      'sendReminders': sendReminders,
-      'sendEmail': sendEmail,
-      'paymentMethod': paymentMethod,
-      'fundsSource': fundsSource,
+      'responsible_user_email': responsibleUserEmail,
+      'send_reminders': sendReminders,
+      'send_email': sendEmail,
+      'payment_method': paymentMethod,
+      'funds_source': fundsSource,
       'discount': discount,
-      'thirdPartyAuthorizationDetails': thirdPartyAuthorizationDetails,
+      'third_party_authorization_details': thirdPartyAuthorizationDetails,
     };
   }
 }
