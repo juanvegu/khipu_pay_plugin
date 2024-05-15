@@ -1,11 +1,26 @@
 import 'package:dio/dio.dart';
+import 'package:khipu_pay_plugin/src/domain/khipu_credential.dart';
+import 'package:khipu_pay_plugin/src/util/constants.dart';
 
 import 'network_path.dart';
 
-class Network {
-  final Dio dio = Dio(BaseOptions(
-    baseUrl: NetworkPath.baseUrl,
-    connectTimeout: const Duration(milliseconds: 5000),
-    receiveTimeout: const Duration(milliseconds: 3000),
-  ));
+final class Network {
+  final KhipuCredential _credential;
+  late final Dio _dio;
+
+  Dio get dio => _dio;
+
+  Network({required KhipuCredential credential}) : _credential = credential {
+    final Map<String, dynamic> headers = {
+      Constants.contentType: Headers.jsonContentType,
+      Constants.apiKey: _credential.apiKey
+    };
+
+    _dio = Dio(BaseOptions(
+      baseUrl: NetworkPath.baseUrl,
+      connectTimeout: const Duration(milliseconds: 5000),
+      receiveTimeout: const Duration(milliseconds: 3000),
+      headers: headers
+    ));
+  }
 }

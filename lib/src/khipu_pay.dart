@@ -1,5 +1,7 @@
 import 'package:khipu_pay_plugin/khipu_pay_plugin.dart';
+import 'package:khipu_pay_plugin/src/config/network.dart';
 import 'package:khipu_pay_plugin/src/domain/khipu_credential.dart';
+import 'package:khipu_pay_plugin/src/domain/khipu_payment_form.dart';
 import 'package:khipu_pay_plugin/src/khipu_pay_platform.dart';
 import 'package:khipu_pay_plugin/src/network/khipu_network.dart';
 import 'package:khipu_pay_plugin/src/network/khipu_network_interface.dart';
@@ -19,14 +21,11 @@ final class KhipuPay {
 
   bool _initialized = false;
 
-
-  late KhipuNetworkInterface _network;
-  late String paymentID;
+  late KhipuNetworkInterface _khipuNetwork;
 
   static void initialize({
     KeyMode keyMode = KeyMode.dartDefine,
-    String? khipuId,
-    String? khipuSecret,
+    String? khipuAPIKey,
   }) {
     assert(
       !_instance._initialized,
@@ -36,53 +35,45 @@ final class KhipuPay {
     switch (keyMode) {
       case KeyMode.normal:
         assert(
-          khipuId != null && khipuSecret != null,
-          'You must provide khipuId and khipuSecret when using KeyMode.normal',
+          khipuAPIKey != null,
+          'You must provide an API key when using KeyMode.norma',
         );
 
-        _instance._init(khipuId!, khipuSecret!);
+        _instance._init(khipuAPIKey!);
       case KeyMode.dartDefine:
-        const identifier = String.fromEnvironment(
-          Constants.khipuId, 
-          defaultValue: Constants.empty
-        );
-        const secret = String.fromEnvironment(
-          Constants.khipuSecret, 
+        const khipuAPIKey = String.fromEnvironment(
+          Constants.khipuAPIKey, 
           defaultValue: Constants.empty
         );
 
         assert(
-          identifier != Constants.empty && secret != Constants.empty,
-          'You must provide khipuId and khipuSecret in your environment when using KeyMode.dartDefine',
+          khipuAPIKey != Constants.empty,
+          'You must provide an API key when using KeyMode.dartDefine',
         );
 
-        _instance._init(identifier, secret);
+        _instance._init(khipuAPIKey);
     }
   }
 
-  void _init(
-    String khipuId,
-    String khipuSecret
-  ) {
+  void _init(String khipuAPIKey) {
     final KhipuCredential credential = KhipuCredential(
-      khipuId: khipuId, 
-      khipuSecret: khipuSecret
+      apiKey: khipuAPIKey,
     );
 
-    _network = KhipuNetwork(credential: credential);
+    final network = Network(credential: credential);
+    _khipuNetwork = KhipuNetwork(network: network);
     _initialized = true;
   }
 
-  Future<KhipuPayment> createPaymentID() async {
-    return await _network.getPaymentID();
+  Future<KhipuPayment> createPayment(KhipuPaymentForm payment) async {
+    return await _khipuNetwork.createPayment(payment: payment);
   }
 
   String processPayment() {
     return KhipuPayPlatform.instance.processPayment();
   }
 
-  Future<KhipuStatus> paymentStatus({required KhipuPayment payment}) async {
-    Future.delayed(const Duration(seconds: 2));
-    return KhipuStatus(status: Constants.empty);
+  Future<KhipuPayment> paymentStatus({required KhipuPayment payment}) async {
+    return await _khipuNetwork.getPaymentById(id: payment.paymentId);
   }
 }

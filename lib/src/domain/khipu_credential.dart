@@ -1,9 +1,7 @@
 final class KhipuCredential {
-  final String khipuId;
-  final String khipuSecret;
+  final String apiKey;
 
   KhipuCredential({
-    required this.khipuId,
-    required this.khipuSecret,
+    required this.apiKey,
   });
 }
