@@ -84,7 +84,7 @@ final class KhipuPaymentForm {
   }
 
   Map<String, dynamic> toJson() {
-    return {
+    final Map<String, dynamic> data = {
       'amount': amount,
       'currency': currency,
       'subject': subject,
@@ -111,5 +111,7 @@ final class KhipuPaymentForm {
       'mandatory_payment_method': mandatoryPaymentMethod,
       'psp_client_merchant_name': pspClientMerchantName,
     };
+    data.removeWhere((_, value) => value == null);
+    return data;
   }
 }

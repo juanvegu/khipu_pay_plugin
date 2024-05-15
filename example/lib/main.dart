@@ -5,7 +5,7 @@ import 'package:khipu_pay_plugin/khipu_pay_plugin.dart';
 void main() {
   KhipuPay.initialize(
     keyMode: KeyMode.normal, 
-    apiKey: 'c3a7ad13-0e0e-4aed-a695-24f39f021198',
+    apiKey: '',
   );
   runApp(const MyApp());
 }
@@ -32,7 +32,33 @@ class _MyAppState extends State<MyApp> {
           title: const Text('KhipuPay Plugin'),
         ),
         body: Center(
-          child: Text(KhipuPay.instance.processPayment()),
+          child: Column(
+            children: [
+              ElevatedButton(
+                onPressed: () async {
+                  final response = await KhipuPay.instance.createPayment(KhipuPaymentForm(
+                    subject: 'Test Payment',
+                    amount: 1000,
+                    currency: 'CLP',
+                    transactionId: '123',
+                    payerName: 'John Doe',
+                  ));
+
+                  print(response.paymentId);
+                },
+                child: const Text('Create Payment'),
+              ),
+              Text(KhipuPay.instance.processPayment()),
+              ElevatedButton(
+                onPressed: () async {
+                  final response = await KhipuPay.instance.paymentStatus(paymentId: 'ytzknrfnuljw');
+
+                  print(response.status);
+                },
+                child: const Text('Get Payment Status'),
+              )
+            ],
+          ),
         ),
       ),
     );

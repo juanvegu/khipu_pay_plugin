@@ -73,7 +73,7 @@ SPEC CHECKSUMS:
   BEMCheckBox: 5ba6e37ade3d3657b36caecc35c8b75c6c2b1a4e
   Flutter: e0871f40cf51350855a761d2e70bf5af5b9b5de7
   FMDB: 2ce00b547f966261cd18927a3ddb07cb6f3db82a
-  integration_test: 13825b8a9334a850581300559b8839134b124670
+  integration_test: ce0a3ffa1de96d1a89ca0ac26fca7ea18a749ef4
   IQKeyboardManager: 2a6e97afdafc7becf0cb17a9a8d795e3a980717f
   JSONModel: 840bc0fcffb24b8454d2c026bf26fea454b8e98d
   khenshin: ca99c9a779879e04e8ba02da953ebba46739468d
