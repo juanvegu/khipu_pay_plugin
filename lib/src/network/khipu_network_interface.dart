@@ -6,7 +6,7 @@ abstract class KhipuNetworkInterface {
   Future<KhipuPayment> createPayment({required KhipuPaymentForm payment});
   Future<void> deletePaymentById({required String id});
   Future<void> getBanks();
-  Future<void> getPaymentById({required String id});
+  Future<KhipuPayment> getPaymentById({required String id});
   Future<void> getPaymentMethods({required String id});
   Future<void> getPaymentPrediction();
   Future<void> postReceiver();
