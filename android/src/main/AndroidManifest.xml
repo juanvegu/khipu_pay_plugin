@@ -1,3 +1,14 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
   package="cl.duckytie.khipu_pay">
+    <queries>
+        <package android:name="cl.bci.pass" />
+        <package android:name="cl.bancochile.mi_pass2" />
+        <package android:name="net.veritran.becl.prod" />
+        <package android:name="cl.scotiabank.keypass" />
+        <package android:name="cl.santander.santanderpasschile" />
+        <package android:name="com.konylabs.ItauMobileBank" />
+        <package android:name="cl.bancosecurity.securitypass" />
+        <package android:name="cl.bice.bicepassmobile2" />
+        <package android:name="cl.consorcio.tupass" />
+    </queries>
 </manifest>
