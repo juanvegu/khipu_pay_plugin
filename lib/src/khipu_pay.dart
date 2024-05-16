@@ -33,8 +33,8 @@ final class KhipuPay {
     switch (keyMode) {
       case KeyMode.normal:
         assert(
-          apiKey != null,
-          'You must provide an API key when using KeyMode.norma',
+          apiKey != null && apiKey.isNotEmpty,
+          'You must provide an API key when using KeyMode.normal',
         );
 
         _instance._init(apiKey!);
@@ -45,7 +45,7 @@ final class KhipuPay {
         );
 
         assert(
-          apiKey != Constants.empty,
+          apiKey.isNotEmpty,
           'You must provide an API key when using KeyMode.dartDefine',
         );
 
