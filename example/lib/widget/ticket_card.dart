@@ -9,11 +9,11 @@ class TicketCard extends StatelessWidget {
     return SafeArea(
         child: Center(
           child: Stack(
-            alignment: Alignment(0, 0),
+            alignment: const Alignment(0, 0),
             children: [
               Container(
                 width: double.infinity,
-                constraints: BoxConstraints(maxWidth: 500, maxHeight: 600),
+                constraints: const BoxConstraints(maxWidth: 500, maxHeight: 600),
                 margin: const EdgeInsets.all(20),
                 decoration: BoxDecoration(
                   color: Colors.white,
@@ -29,7 +29,7 @@ class TicketCard extends StatelessWidget {
                 child: child,
               ),
               Container(
-                constraints: BoxConstraints(maxWidth: 550),
+                constraints: const BoxConstraints(maxWidth: 550),
                 child:Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [circleWidget(),Expanded(child: Divider(
