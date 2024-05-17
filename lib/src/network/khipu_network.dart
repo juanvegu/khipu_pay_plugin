@@ -16,7 +16,7 @@ final class KhipuNetwork extends Network implements KhipuNetworkInterface {
   Future<KhipuPayment> createPayment({required KhipuPaymentForm payment}) async {
     try {
       final response = await dio.post(
-        NetworkPath.payments,
+        NetworkPath.createPayment(),
         data: payment.toJson()
       );
       return KhipuPayment.fromJson(response.data);
@@ -38,7 +38,7 @@ final class KhipuNetwork extends Network implements KhipuNetworkInterface {
   @override
   Future<KhipuPayment> getPaymentById({required String id}) async {
     try {
-      final response = await dio.get('${NetworkPath.payments}/$id');
+      final response = await dio.get(NetworkPath.getPayment(id));
       return KhipuPayment.fromJson(response.data);
     } catch (e) {
       throw Exception('Error getting payment by id: $e');
