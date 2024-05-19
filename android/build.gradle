@@ -2,7 +2,7 @@ group 'cl.duckytie.khipu_pay'
 version '1.0-SNAPSHOT'
 
 buildscript {
-    ext.kotlin_version = '1.7.10'
+    ext.kotlin_version = '1.9.0'
     repositories {
         google()
         mavenCentral()
@@ -14,11 +14,11 @@ buildscript {
     }
 }
 
-allprojects {
+rootProject.allprojects {
     repositories {
         google()
         mavenCentral()
-        maven { url = uri("https://dev.khipu.com/nexus/content/repositories/khenshin") }
+        maven { url "https://dev.khipu.com/nexus/content/repositories/khenshin" }
     }
 }
 
