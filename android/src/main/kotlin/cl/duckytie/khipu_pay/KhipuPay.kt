@@ -1,6 +1,6 @@
 package cl.duckytie.khipu_pay
 
-import androidx.annotation.NonNull
+import cl.duckytie.khipu_pay.utils.Constants
 
 import io.flutter.embedding.engine.plugins.FlutterPlugin
 import io.flutter.plugin.common.MethodCall
@@ -10,20 +10,17 @@ import io.flutter.plugin.common.MethodChannel.Result
 
 /** KhipuPayPlugin */
 class KhipuPay: FlutterPlugin, MethodCallHandler {
-  /// The MethodChannel that will the communication between Flutter and native Android
-  ///
-  /// This local reference serves to register the plugin with the Flutter Engine and unregister it
-  /// when the Flutter Engine is detached from the Activity
   private lateinit var channel : MethodChannel
 
   override fun onAttachedToEngine(flutterPluginBinding: FlutterPlugin.FlutterPluginBinding) {
-    channel = MethodChannel(flutterPluginBinding.binaryMessenger, "khipu_pay_plugin")
+    channel = MethodChannel(flutterPluginBinding.binaryMessenger, Constants.KHIPU_PAY_CHANNEL)
     channel.setMethodCallHandler(this)
   }
 
   override fun onMethodCall(call: MethodCall, result: Result) {
-    if (call.method == "getPlatformVersion") {
-      result.success("Android ${android.os.Build.VERSION.RELEASE}")
+    if (call.method == Constants.LAUNCH_KHIPU) {
+      val paymentId = call.argument<String>(Constants.PAYMENT_ID)
+      result.success(paymentId)
     } else {
       result.notImplemented()
     }

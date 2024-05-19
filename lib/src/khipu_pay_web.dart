@@ -9,7 +9,7 @@ final class KhipuPayWeb extends KhipuPayPlatform {
   }
 
   @override
-  String processPayment() {
+  Future<String> processPayment(String paymentId) async {
     return 'Payment processed from web';
   } 
 }
