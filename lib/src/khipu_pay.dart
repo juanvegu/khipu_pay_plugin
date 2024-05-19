@@ -61,7 +61,7 @@ final class KhipuPay {
     return await _khipuNetwork.createPayment(payment: payment);
   }
 
-  Future<String> processPayment({required String paymentId}) async {
+  Future<String?> processPayment({required String paymentId}) async {
     return await KhipuPayPlatform.instance.processPayment(paymentId);
   }
 
