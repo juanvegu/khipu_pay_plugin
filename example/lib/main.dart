@@ -7,7 +7,7 @@ import 'widget/ticket_card.dart';
 void main() {
   KhipuPay.initialize(
     keyMode: KeyMode.normal, 
-    apiKey: '',
+    apiKey: 'asdasd',
   );
   runApp(const MyApp());
 }
@@ -44,17 +44,24 @@ class _MyAppState extends State<MyApp> {
               const Spacer(),
               ElevatedButton(
                 onPressed: () async {
-                  final _ = await KhipuPay.instance.createPayment(KhipuPaymentForm(
+                  final response = await KhipuPay.instance.createPayment(KhipuPaymentForm(
                     subject: 'Test Payment',
                     amount: 1000,
                     currency: 'CLP',
                     transactionId: '123',
                     payerName: 'John Doe',
                   ));
+                  print(response.paymentId);
                 },
                 child: const Text('Create Payment'),
               ),
-              Text(KhipuPay.instance.processPayment()),
+              ElevatedButton(
+                onPressed: () async {
+                  final paymentID = await KhipuPay.instance.processPayment(paymentId: 'asdasdasd');
+                  print(paymentID);
+                },
+                child: const Text('Launch Khipu'),
+              ),
               ElevatedButton(
                 onPressed: () async {
                   final _ = await KhipuPay.instance.paymentStatus(paymentId: 'ytzknrfnuljw');

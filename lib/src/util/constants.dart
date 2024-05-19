@@ -1,7 +1,11 @@
 final class Constants {
   static const empty = "";
+
+  // Channel constants
   
-  static const methodChannel = "khipu_pay_plugin";
+  static const khipuChannel = "khipu_pay_plugin";
+  static const launchKhipuMethod = "launch_khipu";
+  static const paymentId = "payment_id";
 
   // Authentification constants
   
