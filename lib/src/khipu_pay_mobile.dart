@@ -5,7 +5,7 @@ final class KhipuPayMobile extends KhipuPayPlatform {
   KhipuPayMobile();
 
   @override
-  Future<String> processPayment(String paymentId) async {
+  Future<String?> processPayment(String paymentId) async {
     final Map<String, dynamic> arguments = {
       Constants.paymentId: paymentId
     };
