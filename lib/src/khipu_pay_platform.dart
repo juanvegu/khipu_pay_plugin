@@ -1,4 +1,5 @@
 import 'package:flutter/services.dart';
+import 'package:khipu_pay_plugin/src/domain/khipu_result.dart';
 import 'package:khipu_pay_plugin/src/khipu_pay_mobile.dart';
 import 'package:khipu_pay_plugin/src/util/constants.dart';
 
@@ -11,7 +12,7 @@ abstract class KhipuPayPlatform {
 
   static KhipuPayPlatform instance = KhipuPayMobile();
 
-  Future<String?> processPayment(String paymentId) {
+  Future<KhipuResult?> processPayment(String paymentId) {
     throw UnimplementedError('processPayment() has not been implemented.');
   }
 }
