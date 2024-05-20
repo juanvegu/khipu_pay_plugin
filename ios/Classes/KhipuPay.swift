@@ -43,19 +43,15 @@ public class KhipuPay: NSObject, FlutterPlugin {
   }
   
   private func successProcess(paymentId: String, exitURL: URL?, result: @escaping FlutterResult) {
-    let khipuResult = KhipuResult(
-      operationId: paymentId,
-      exitMessage: Constants.Result.ok.result,
-      exitUrl: exitURL?.absoluteString,
-      result: Constants.Result.ok.result
-    )
-    
     do {
-      let encoder = JSONEncoder()
-      encoder.outputFormatting = .prettyPrinted
-      let data = try encoder.encode(khipuResult)
-      let resultText = String(data: data, encoding: .utf8)
-      result(resultText)
+      let khipuResult = try KhipuResult(
+        operationId: paymentId,
+        exitMessage: Constants.Result.ok.result,
+        exitUrl: exitURL?.absoluteString,
+        result: Constants.Result.ok.result
+      ).toJSONString()
+
+      result(khipuResult)
     } catch {
       result(
         FlutterError(
