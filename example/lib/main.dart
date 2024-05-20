@@ -7,7 +7,7 @@ import 'widget/ticket_card.dart';
 void main() {
   KhipuPay.initialize(
     keyMode: KeyMode.normal,
-    apiKey: '',
+    apiKey: 'your_api_key',
   );
   runApp(const MyApp());
 }
@@ -20,6 +20,8 @@ class MyApp extends StatefulWidget {
 }
 
 class _MyAppState extends State<MyApp> {
+  KhipuPayment? khipuPayment;
+
   @override
   void initState() {
     super.initState();
@@ -36,15 +38,17 @@ class _MyAppState extends State<MyApp> {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               const Spacer(),
-              const Text('KhipuPay Plugin',
-                  style: TextStyle(
-                    fontSize: 25,
-                    fontWeight: FontWeight.bold,
-                  )),
+              const Text(
+                'KhipuPay Plugin',
+                style: TextStyle(
+                  fontSize: 25,
+                  fontWeight: FontWeight.bold,
+                ),
+            ),
               const Spacer(),
               ElevatedButton(
                 onPressed: () async {
-                  final _ = await KhipuPay.instance.createPayment(KhipuPaymentForm(
+                  khipuPayment = await KhipuPay.instance.createPayment(KhipuPaymentForm(
                     subject: 'Test Payment',
                     amount: 1000,
                     currency: 'CLP',
@@ -56,13 +60,13 @@ class _MyAppState extends State<MyApp> {
               ),
               ElevatedButton(
                 onPressed: () async {
-                  final _ = await KhipuPay.instance.processPayment(paymentId: 'da6vi3ukhu0u');
+                  final _ = await KhipuPay.instance.processPayment(paymentId: khipuPayment?.paymentId ?? '');
                 },
                 child: const Text('Launch Khipu'),
               ),
               ElevatedButton(
                 onPressed: () async {
-                  final _ = await KhipuPay.instance.paymentStatus(paymentId: 'ytzknrfnuljw');
+                  final _ = await KhipuPay.instance.paymentStatus(paymentId: khipuPayment?.paymentId ?? '');
                 },
                 child: const Text('Get Payment Status'),
               ),

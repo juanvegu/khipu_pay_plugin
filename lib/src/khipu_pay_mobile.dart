@@ -18,7 +18,11 @@ final class KhipuPayMobile extends KhipuPayPlatform {
         arguments
       );
 
-      return khipuResultFromJson(result!);
+      if (result == null) {
+        return null;
+      }
+
+      return khipuResultFromJson(result);
     } on PlatformException catch (e) {
       throw Exception("Error processing payment: $e");
     } catch (e) {

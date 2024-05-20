@@ -48,7 +48,7 @@ public class KhipuPay: NSObject, FlutterPlugin {
         operationId: paymentId,
         exitMessage: Constants.Result.ok.result,
         exitUrl: exitURL?.absoluteString,
-        result: Constants.Result.ok.result
+        result: Constants.Result.ok.exitMessage
       ).toJSONString()
 
       result(khipuResult)
