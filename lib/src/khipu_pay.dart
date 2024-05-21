@@ -1,6 +1,5 @@
 import 'package:khipu_pay_plugin/khipu_pay_plugin.dart';
 import 'package:khipu_pay_plugin/src/domain/khipu_credential.dart';
-import 'package:khipu_pay_plugin/src/domain/khipu_result.dart';
 import 'package:khipu_pay_plugin/src/khipu_pay_platform.dart';
 import 'package:khipu_pay_plugin/src/network/khipu_network.dart';
 import 'package:khipu_pay_plugin/src/network/khipu_network_interface.dart';

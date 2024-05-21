@@ -15,4 +15,11 @@ final class Constants {
 
   static const apiKey = "x-api-key";
   static const contentType = "Content-Type";
+
+  // Khipu web constants
+
+  static const khipuScriptType = "text/javascript";
+  static const khipuScript = "https://js.khipu.com/v1/kws.js";
+  static const scriptQuerySelector = "script[src='https://js.khipu.com/v1/kws.js']";
+  static const khipuWebRoot = "khipu-web-root";
 }
