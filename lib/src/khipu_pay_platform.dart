@@ -1,6 +1,6 @@
 import 'package:flutter/services.dart';
 import 'package:khipu_pay_plugin/src/domain/khipu_result.dart';
-import 'package:khipu_pay_plugin/src/khipu_pay_mobile.dart';
+import 'package:khipu_pay_plugin/src/platform/mobile/khipu_pay_mobile.dart';
 import 'package:khipu_pay_plugin/src/util/constants.dart';
 
 abstract class KhipuPayPlatform {
