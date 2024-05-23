@@ -1,3 +1,4 @@
+import 'package:flutter/services.dart';
 import 'package:flutter_web_plugins/flutter_web_plugins.dart';
 import 'package:khipu_pay_plugin/src/domain/khipu_result.dart';
 import 'package:khipu_pay_plugin/src/khipu_pay_platform.dart';
@@ -21,8 +22,13 @@ final class KhipuPayWeb extends KhipuPayPlatform {
 
   @override
   Future<KhipuResult?> processPayment(String paymentId) async {
-    handler.startKhipuPayment(paymentId);
-    return null;
+    try {
+      final khipuResult = await handler.startKhipuPayment(paymentId);
+      return KhipuResult.fromJson(khipuResult);
+    } on PlatformException catch (e) {
+      throw Exception("Error processing payment: $e");
+    } catch (e) {
+      throw Exception("Error parsing KhipuResult: $e");
+    }
   } 
 }
-
