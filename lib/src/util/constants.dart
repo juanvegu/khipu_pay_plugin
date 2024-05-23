@@ -18,7 +18,6 @@ final class Constants {
 
   // Khipu web constants
 
-  static const khipuScriptType = "text/javascript";
   static const khipuScript = "https://js.khipu.com/v1/kws.js";
   static const scriptQuerySelector = "script[src='https://js.khipu.com/v1/kws.js']";
   static const khipuWebRoot = "khipu-web-root";
