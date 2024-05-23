@@ -1,6 +1,6 @@
 # KhipuPay
 
-[Español][README.md] | English
+[Español](README.md) | English
 
 KhipuPay is a library that allows you to integrate Khipu payments into your Flutter app.
 
