@@ -4,7 +4,7 @@ version: 2.0.0
 homepage: https://github.com/juanvegu/khipu_pay_plugin
 
 environment:
-  sdk: '>=3.2.6 <4.0.0'
+  sdk: '>=3.4.0 <4.0.0'
   flutter: '>=3.3.0'
 
 dependencies:
