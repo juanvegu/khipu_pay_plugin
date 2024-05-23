@@ -3,6 +3,7 @@
 * Web support
 * Version of khenshin 1.756
 * New khipu-client-android version 2.0
+* Payment API version 3.0
 
 ## 1.1.0
 
