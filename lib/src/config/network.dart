@@ -6,7 +6,7 @@ import 'network_path.dart';
 
 class Network {
   final KhipuCredential _credential;
-  
+
   final Dio _dio = Dio(BaseOptions(
     baseUrl: NetworkPath.baseUrl,
     connectTimeout: const Duration(milliseconds: 5000),

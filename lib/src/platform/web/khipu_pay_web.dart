@@ -5,10 +5,9 @@ import 'package:khipu_pay_plugin/src/khipu_pay_platform.dart';
 import 'package:khipu_pay_plugin/src/platform/web/khipu_pay_web_handler.dart';
 import 'package:khipu_pay_plugin/src/platform/web/khipu_pay_web_handler_interface.dart';
 
-
 final class KhipuPayWeb extends KhipuPayPlatform {
   final KhipuPayWebHandlerInterface handler;
-  
+
   KhipuPayWeb({
     required this.handler,
   });
@@ -30,5 +29,5 @@ final class KhipuPayWeb extends KhipuPayPlatform {
     } catch (e) {
       throw Exception("Error parsing KhipuResult: $e");
     }
-  } 
+  }
 }
