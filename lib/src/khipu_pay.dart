@@ -21,6 +21,16 @@ final class KhipuPay {
 
   late KhipuNetworkInterface _khipuNetwork;
 
+  /// Initializes the Khipu Pay plugin.
+  ///
+  /// This method is used to initialize the Khipu Pay plugin.
+  /// Call this method before using any other methods or properties of the plugin.
+  /// 
+  /// Example usage:
+  /// 
+  /// KhipuPay.initialize();
+  ///
+  /// Note: This method should be called only once during the app's lifecycle.
   static void initialize({
     KeyMode keyMode = KeyMode.dartDefine,
     String? apiKey,
@@ -57,14 +67,45 @@ final class KhipuPay {
     _initialized = true;
   }
 
+  /// Creates a Khipu payment using the provided [payment] form.
+  ///
+  /// Returns a [Future] that completes with a [KhipuPayment] object representing the created payment.
+  /// The [payment] parameter is a [KhipuPaymentForm] object containing the necessary information to create the payment.
+  /// 
+  /// Example usage:
+  /// 
+  /// KhipuPaymentForm paymentForm = KhipuPaymentForm(
+  ///   amount: 100.0,
+  ///   subject: 'Payment for goods',
+  ///   currency: 'USD',
+  ///   receiverId: 'your_receiver_id',
+  /// );
+  /// 
+  /// KhipuPayment payment = await createPayment(paymentForm);
+  /// print(payment.paymentId);
   Future<KhipuPayment> createPayment(KhipuPaymentForm payment) async {
     return await _khipuNetwork.createPayment(payment: payment);
   }
 
+  /// Processes a payment with the specified payment ID.
+  ///
+  /// Returns a [KhipuResult] object representing the result of the payment process.
+  /// If the payment process is successful, the [KhipuResult] object will contain
+  /// the necessary information about the payment. If the payment process fails,
+  /// the [KhipuResult] object will be null.
+  ///
+  /// The [paymentId] parameter is the ID of the payment to be processed.
+  ///
+  /// Throws an exception if there is an error during the payment process.
   Future<KhipuResult?> processPayment({required String paymentId}) async {
     return await KhipuPayPlatform.instance.processPayment(paymentId);
   }
-
+  
+  /// Retrieves the status of a Khipu payment.
+  ///
+  /// The [paymentId] parameter is the unique identifier of the payment.
+  ///
+  /// Returns a [Future] that resolves to a [KhipuPayment] object representing the payment status.
   Future<KhipuPayment> paymentStatus({required String paymentId}) async {
     return await _khipuNetwork.getPaymentById(id: paymentId);
   }

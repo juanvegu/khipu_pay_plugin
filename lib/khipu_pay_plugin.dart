@@ -1,3 +1,6 @@
+// Copyright (c) 2024 juanvegu
+// Licensed under the MIT License. See LICENSE in the project root for license information.
+
 library khipupay_plugin;
 
 export 'src/khipu_pay.dart';
