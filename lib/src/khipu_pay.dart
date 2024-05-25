@@ -25,9 +25,9 @@ final class KhipuPay {
   ///
   /// This method is used to initialize the Khipu Pay plugin.
   /// Call this method before using any other methods or properties of the plugin.
-  /// 
+  ///
   /// Example usage:
-  /// 
+  ///
   /// KhipuPay.initialize();
   ///
   /// Note: This method should be called only once during the app's lifecycle.
@@ -71,16 +71,16 @@ final class KhipuPay {
   ///
   /// Returns a [Future] that completes with a [KhipuPayment] object representing the created payment.
   /// The [payment] parameter is a [KhipuPaymentForm] object containing the necessary information to create the payment.
-  /// 
+  ///
   /// Example usage:
-  /// 
+  ///
   /// KhipuPaymentForm paymentForm = KhipuPaymentForm(
   ///   amount: 100.0,
   ///   subject: 'Payment for goods',
   ///   currency: 'USD',
   ///   receiverId: 'your_receiver_id',
   /// );
-  /// 
+  ///
   /// KhipuPayment payment = await createPayment(paymentForm);
   /// print(payment.paymentId);
   Future<KhipuPayment> createPayment(KhipuPaymentForm payment) async {
@@ -100,7 +100,7 @@ final class KhipuPay {
   Future<KhipuResult?> processPayment({required String paymentId}) async {
     return await KhipuPayPlatform.instance.processPayment(paymentId);
   }
-  
+
   /// Retrieves the status of a Khipu payment.
   ///
   /// The [paymentId] parameter is the unique identifier of the payment.
