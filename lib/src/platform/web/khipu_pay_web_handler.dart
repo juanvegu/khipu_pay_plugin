@@ -8,7 +8,7 @@ import 'package:khipu_pay_plugin/src/platform/web/constants_web.dart';
 
 final class KhipuPayWebHandler implements KhipuPayWebHandlerInterface {
   KhipuPayWebHandler();
-  
+
   @override
   void registerKhipuLibrary() {
     final ScriptElement scriptElement = ScriptElement();
@@ -41,16 +41,16 @@ final class KhipuPayWebHandler implements KhipuPayWebHandlerInterface {
 
       callback(jsObject) {
         Map<String, dynamic> khipuResult = jsonDecode(
-          context[ConstantsWeb.json].callMethod(
-            ConstantsWeb.stringify, [jsObject]
-          ),
+          context[ConstantsWeb.json]
+              .callMethod(ConstantsWeb.stringify, [jsObject]),
         );
         khipu.callMethod(ConstantsWeb.close);
         completer.complete(khipuResult);
       }
 
       var options = JsObject.jsify({
-        ConstantsWeb.mountElement: document.getElementById(ConstantsWeb.khipuWebRoot), 
+        ConstantsWeb.mountElement:
+            document.getElementById(ConstantsWeb.khipuWebRoot),
         ConstantsWeb.modal: true,
         ConstantsWeb.modalOptions: {
           ConstantsWeb.maxWidth: 450,
@@ -62,7 +62,9 @@ final class KhipuPayWebHandler implements KhipuPayWebHandlerInterface {
       });
 
       khipu.callMethod(ConstantsWeb.startOperation, [
-        paymentId, callback, options,
+        paymentId,
+        callback,
+        options,
       ]);
 
       return completer.future;

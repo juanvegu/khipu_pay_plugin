@@ -8,15 +8,11 @@ final class KhipuPayMobile extends KhipuPayPlatform {
 
   @override
   Future<KhipuResult?> processPayment(String paymentId) async {
-    final Map<String, dynamic> arguments = {
-      Constants.paymentId: paymentId
-    };
+    final Map<String, dynamic> arguments = {Constants.paymentId: paymentId};
 
     try {
-      final String? result = await channel.invokeMethod(
-        Constants.launchKhipuMethod, 
-        arguments
-      );
+      final String? result =
+          await channel.invokeMethod(Constants.launchKhipuMethod, arguments);
 
       if (result == null) {
         return null;

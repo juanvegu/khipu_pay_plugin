@@ -33,17 +33,17 @@ final class KhipuPay {
     switch (keyMode) {
       case KeyMode.normal:
         if (apiKey == null || apiKey.isEmpty) {
-          throw ArgumentError('You must provide an API key when using KeyMode.normal');
+          throw ArgumentError(
+              'You must provide an API key when using KeyMode.normal');
         }
         _instance._init(apiKey);
       case KeyMode.dartDefine:
-        const apiKey = String.fromEnvironment(
-          Constants.khipuAPIKey, 
-          defaultValue: Constants.empty
-        );
+        const apiKey = String.fromEnvironment(Constants.khipuAPIKey,
+            defaultValue: Constants.empty);
 
         if (apiKey.isEmpty) {
-          throw ArgumentError('You must provide an API key when using KeyMode.dartDefine');
+          throw ArgumentError(
+              'You must provide an API key when using KeyMode.dartDefine');
         }
 
         _instance._init(apiKey);

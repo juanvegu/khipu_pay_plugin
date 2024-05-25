@@ -1,6 +1,7 @@
 class ConstantsWeb {
   static const khipuScript = "https://js.khipu.com/v1/kws.js";
-  static const scriptQuerySelector = "script[src='https://js.khipu.com/v1/kws.js']";
+  static const scriptQuerySelector =
+      "script[src='https://js.khipu.com/v1/kws.js']";
   static const khipuWebRoot = "khipu-web-root";
 
   static const json = "JSON";

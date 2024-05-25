@@ -1,7 +1,8 @@
 import 'dart:convert';
 import 'package:khipu_pay_plugin/src/domain/khipu_event.dart';
 
-KhipuResult khipuResultFromJson(String str) => KhipuResult.fromJson(json.decode(str));
+KhipuResult khipuResultFromJson(String str) =>
+    KhipuResult.fromJson(json.decode(str));
 
 String khipuResultToJson(KhipuResult data) => json.encode(data.toJson());
 
@@ -34,7 +35,10 @@ class KhipuResult {
       exitUrl: json['exitUrl'],
       continueUrl: json['continueUrl'],
       result: json['result'] ?? '',
-      events: (json['events'] as List<dynamic>?)?.map((e) => KhipuEvent.fromJson(e)).toList() ?? [],
+      events: (json['events'] as List<dynamic>?)
+              ?.map((e) => KhipuEvent.fromJson(e))
+              .toList() ??
+          [],
       failureReason: json['failureReason'],
     );
   }
