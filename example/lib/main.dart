@@ -5,10 +5,7 @@ import 'package:khipu_pay_plugin/khipu_pay_plugin.dart';
 import 'widget/ticket_card.dart';
 
 void main() {
-  KhipuPay.initialize(
-    keyMode: KeyMode.normal,
-    apiKey: 'your_api_key',
-  );
+  KhipuPay.initialize(apiKey: 'your_api_key');
   runApp(const MyApp());
 }
 

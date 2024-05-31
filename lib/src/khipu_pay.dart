@@ -31,32 +31,22 @@ final class KhipuPay {
   /// KhipuPay.initialize();
   ///
   /// Note: This method should be called only once during the app's lifecycle.
-  static void initialize({
-    KeyMode keyMode = KeyMode.dartDefine,
-    String? apiKey,
-  }) {
+  static void initialize({String? apiKey}) {
     assert(
       !_instance._initialized,
       'This instance is already initialized',
     );
 
-    switch (keyMode) {
-      case KeyMode.normal:
-        if (apiKey == null || apiKey.isEmpty) {
-          throw ArgumentError(
-              'You must provide an API key when using KeyMode.normal');
-        }
-        _instance._init(apiKey);
-      case KeyMode.dartDefine:
-        const apiKey = String.fromEnvironment(Constants.khipuAPIKey,
-            defaultValue: Constants.empty);
+    if (apiKey != null && apiKey.isNotEmpty) {
+      _instance._init(apiKey);
+    } else {
+      const apiKey = String.fromEnvironment(Constants.khipuAPIKey, defaultValue: Constants.empty);
 
-        if (apiKey.isEmpty) {
-          throw ArgumentError(
-              'You must provide an API key when using KeyMode.dartDefine');
-        }
+      if (apiKey.isEmpty) {
+        throw ArgumentError('You must provide an API key in the environment variables or as a parameter to initialize() method.');
+      }
 
-        _instance._init(apiKey);
+      _instance._init(apiKey);
     }
   }
 
