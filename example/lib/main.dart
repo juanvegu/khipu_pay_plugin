@@ -57,7 +57,7 @@ class _MyAppState extends State<MyApp> {
               ),
               ElevatedButton(
                 onPressed: () async {
-                  final _ = await KhipuPay.instance.processPayment(paymentId: khipuPayment?.paymentId ?? '');
+                  final _ = await KhipuPay.processPayment(paymentId: khipuPayment?.paymentId ?? '');
                 },
                 child: const Text('Launch Khipu'),
               ),
