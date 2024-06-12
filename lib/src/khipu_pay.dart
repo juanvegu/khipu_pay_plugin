@@ -87,7 +87,7 @@ final class KhipuPay {
   /// The [paymentId] parameter is the ID of the payment to be processed.
   ///
   /// Throws an exception if there is an error during the payment process.
-  Future<KhipuResult?> processPayment({required String paymentId}) async {
+  static Future<KhipuResult?> processPayment({required String paymentId}) async {
     return await KhipuPayPlatform.instance.processPayment(paymentId);
   }
 
