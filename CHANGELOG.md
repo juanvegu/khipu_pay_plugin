@@ -1,4 +1,12 @@
+# Changelog
+
+## 2.0.1
+
+* Documentation update.
+* Process Payment without initialize the library.
+
 ## 2.0.0
+
 * Project restructuring
 * Web support
 * Version of khenshin 1.756

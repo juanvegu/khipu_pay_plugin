@@ -2,7 +2,7 @@
 
 [Español](README.md) | English
 
-KhipuPay is a library that allows you to integrate Khipu payments into your Flutter app.
+KhipuPay is a library that allows you to integrate Khipu payments in your Flutter app.
 
 ## Example
 
@@ -14,22 +14,23 @@ import 'package:khipu_pay_plugin/khipu_pay_plugin.dart';
 
 ### Initialize
 
-There are two ways to instance the library, we recommend using the first one, because take the apiKey value from the environment variables.
+There are two ways to instantiate the library, we recommend using the first one, because it takes the apiKey value from the environment variables.
 
-This is the best approach because it allows you to keep your API key secure and not expose it in the code.
+This is the best approach, as it allows you to keep your API key safe and not expose it in the code.
 
 ```dart
 KhipuPay.initialize();
 ```
 
-The second way is to pass the keyMode and apiKey values directly to the initialize method.
+The second way is to pass the apiKey directly to the initialize method.
 
-```dart
+````dart
 KhipuPay.initialize(
-  keyMode: KeyMode.normal,
   apiKey: 'your_api_key',
 );
 ```
+
+**IMPORTANT:** To process a payment it is not necessary to initialize the library, since the Khipu API calls can be made from the backend. So it is only necessary to initialize the library if you want to make Khipu API calls from the frontend.
 
 ### Create Payment
 
@@ -52,7 +53,7 @@ KhipuPayment khipuPayment = await KhipuPay.instance.createPayment(
 To process a payment, you need to call the `processPayment` method and pass a `paymentId` as a parameter, obtained from the `createPayment` method. The `processPayment` method will return a `KhipuResult` object.
 
 ```dart
-KhipuResult? result = await KhipuPay.instance.processPayment(paymentId: 'your_payment_id');
+KhipuResult? result = await KhipuPay.processPayment(paymentId: 'your_payment_id');
 ```
 
 ### Check Status Payment
@@ -74,17 +75,18 @@ We recommend using the following version: `https\://services.gradle.org/distribu
 In the `build.gradle` file, change the `com.android.tools.build:gradle` version to the latest version compatible with the Gradle version in this case `8.3.2`.
 
 #### iOS
+
 Remove use_frameworks! of Podfile, to avoid conflicts with Khipu library
 
-```
+```ruby
 target 'Runner' do
   use_frameworks!
 ```
 
 ## Important
+
 * This library is not official, it was created to facilitate the integration of Khipu payments into Flutter apps.
 * Khipu provide an apiKey for development and production environment, you must change these fields, depending on the environment in which your application is located, so that you can process your payments correctly.
-
 
 ## References
 
