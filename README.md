@@ -22,14 +22,15 @@ Este es el mejor enfoque, ya que le permite mantener su clave de API segura y no
 KhipuPay.initialize();
 ```
 
-La segunda forma es pasar los valores keyMode y apiKey directamente al método initialize.
+La segunda forma es pasar el apiKey directamente al método initialize.
 
 ```dart
 KhipuPay.initialize(
-  keyMode: KeyMode.normal,
   apiKey: 'your_api_key',
 );
 ```
+
+**IMPORTANTE:** Para procesar un pago no es necesario inicializar la libreria, ya que las llamadas a la API de Khipu se pueden hacer desde el backend. Por lo que solo es necesario inicializar la librería si se desea hacer llamadas a la API de Khipu desde el frontend.
 
 ### Create Payment
 
@@ -52,7 +53,7 @@ KhipuPayment khipuPayment = await KhipuPay.instance.createPayment(
 Para procesar un pago, es necesario llamar al método `processPayment` y pasar un `paymentId` como parámetro, obtenido del método `createPayment`. El método `processPayment` devolverá un objeto `KhipuResult`.
 
 ```dart
-KhipuResult? result = await KhipuPay.instance.processPayment(paymentId: 'your_payment_id');
+KhipuResult? result = await KhipuPay.processPayment(paymentId: 'your_payment_id');
 ```
 
 ### Comprobar el estado del pago
@@ -74,17 +75,18 @@ Recomendamos utilizar la siguiente versión: `https\://services.gradle.org/distr
 En el archivo `build.gradle`, cambia la versión `com.android.tools.build:gradle` por la última versión compatible con la versión de Gradle en este caso `8.3.2`.
 
 #### iOS
+
 Eliminar use_frameworks! de Podfile, para evitar conflictos con la librería Khipu
 
-```
+```ruby
 target 'Runner' do
   use_frameworks!
 ```
 
 ## Importante
+
 * Esta librería no es oficial, fue creada para facilitar la integración de pagos Khipu en apps Flutter.
 * Khipu proporciona una apiKey para entorno de desarrollo y producción, debes cambiar estos campos, dependiendo del entorno en el que se encuentre tu aplicación, para que puedas procesar tus pagos correctamente.
-
 
 ## Referencias
 

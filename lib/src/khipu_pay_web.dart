@@ -12,5 +12,5 @@ final class KhipuPayWeb extends KhipuPayPlatform {
   @override
   Future<KhipuResult?> processPayment(String paymentId) async {
     return null;
-  } 
+  }
 }
