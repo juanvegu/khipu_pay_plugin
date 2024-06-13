@@ -4,6 +4,7 @@
 
 * Documentation update.
 * Process Payment without initialize the library.
+* KeyMode removed.
 
 ## 2.0.0
 
